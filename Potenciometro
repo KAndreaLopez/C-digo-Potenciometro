@@ -1,0 +1,37 @@
+#define pote1 A5
+#define pote2 A4
+#define ledA 2
+#define ledB 3
+#define ledC 4
+
+int valor_p1;
+int valor_p2;
+
+void setup(){
+  pinMode(ledA,OUTPUT);
+  pinMode(ledB,OUTPUT);
+  pinMode(ledC,OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop(){
+  valor_p1 = analogRead(pote1);
+  valor_p2 = analogRead(pote2);
+  
+  //Para led 1
+  if (valor_p1 < valor_p2)
+  {
+    digitalWrite(ledA,HIGH);
+    digitalWrite(ledB,LOW);
+    digitalWrite(ledC,LOW);
+    Serial.print("es menor que:");
+  }
+  
+  //Para led 2
+  if (valor_p1 > valor_p2)
+  {
+    digitalWrite(ledC,HIGH);
+    digitalWrite(ledA,LOW);
+    digitalWrite(ledB,LOW);
+    Serial.print("es mayor que:");
+  }
